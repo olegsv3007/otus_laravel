@@ -1,0 +1,72 @@
+.search {
+    background-image: url("/img/prague_filtered.jpg");
+    height: 800px;
+    margin-top: -40px;
+    z-index: 0;
+    &_form {
+        padding-top: 100px;
+        margin-left: auto;
+        margin-right: 120px;
+        display: flex;
+        justify-content: end;
+        form {
+            width: 400px;
+            height: 600px;
+            background-color: rgba(0, 0, 0, .6);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .slogan {
+                width: 100%;
+                padding: 10px 20px;
+                color: #fff;
+                text-transform: uppercase;
+                font-weight: bold;
+            }
+            input {
+                width: 90%;
+                margin: 10px 0;
+                height: 60px;
+                border-radius: 4px;
+                padding: 0 10px;
+            }
+            .search_form_error {
+                position: relative;
+                height: 0;
+                color: $red;
+                top: -32px;
+                left: 25px;
+                align-self: start;
+                font-size: 12px;
+            }
+            button {
+                width: 90%;
+                height: 60px;
+                border: none;
+                border-radius: 4px;
+                margin-top: 10px;
+                background: rgb(6,111,126);
+                background: linear-gradient(90deg, $main-gradient-start 0%, $main-gradient-end 100%);
+                color: #fff;
+                font-size: 22px;
+                text-transform: uppercase;
+                transition-duration: 300ms;
+                opacity: 90%;
+                &:hover {
+                    opacity: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .search {
+        &_form {
+            margin-right: 0;
+            justify-content: center;
+        }
+    }
+}
