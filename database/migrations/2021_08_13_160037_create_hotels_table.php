@@ -20,7 +20,7 @@ class CreateHotelsTable extends Migration
             $table->float('latitude');
             $table->float('longitude');
             $table->string('address');
-            $table->unsignedSmallInteger('discount');
+            $table->unsignedSmallInteger('discount')->default(0);
 
             $table->foreign('organization_id')->references('id')->on('organizations');
             $table->foreign('city_id')->references('id')->on('cities');

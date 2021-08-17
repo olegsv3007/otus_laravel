@@ -10,6 +10,7 @@ class AddRoles extends Migration
         'admin',
         'moderator',
         'manager',
+        'user',
     ];
 
     public function up()
