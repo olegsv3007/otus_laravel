@@ -16,7 +16,7 @@ class CreateReservationsTable extends Migration
             $table->date('date_start');
             $table->date('date_end');
             $table->float('price');
-            $table->unsignedBigInteger('status_id');
+            $table->unsignedBigInteger('status_id')->default(1);
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('apartment_id')->references('id')->on('apartments');
