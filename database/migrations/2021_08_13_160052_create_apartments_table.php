@@ -17,6 +17,7 @@ class CreateApartmentsTable extends Migration
             $table->text('description');
             $table->float('price');
             $table->unsignedSmallInteger('discount')->default(0);
+            $table->string('main_image');
 
             $table->foreign('hotel_id')->references('id')->on('hotels');
         });

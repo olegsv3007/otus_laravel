@@ -21,6 +21,7 @@ class CreateHotelsTable extends Migration
             $table->float('longitude');
             $table->string('address');
             $table->unsignedSmallInteger('discount')->default(0);
+            $table->string('main_image');
 
             $table->foreign('organization_id')->references('id')->on('organizations');
             $table->foreign('city_id')->references('id')->on('cities');
