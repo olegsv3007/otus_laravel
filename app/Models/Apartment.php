@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class Apartment extends Model
@@ -62,6 +63,15 @@ class Apartment extends Model
     public function specifications(): MorphToMany
     {
         return $this->morphToMany(Specification::class, 'specificationable');
+    }
+
+    /**
+     * @return MorphMany
+     * Метод для получения всех изображений относящихся к апартаментам
+     */
+    public function images(): MorphMany
+    {
+        return $this->morphMany(Image::class, 'imaginable');
     }
 
 }

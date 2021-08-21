@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Hotel extends Model
 {
@@ -81,6 +82,15 @@ class Hotel extends Model
     public function specifications(): MorphToMany
     {
         return $this->morphToMany(Specification::class, 'specificationable');
+    }
+
+    /**
+     * @return MorphMany
+     * Метод для получения всех изображений относящихся к отелю
+     */
+    public function images(): MorphMany
+    {
+        return $this->morphMany(Image::class, 'imaginable');
     }
 
 }
