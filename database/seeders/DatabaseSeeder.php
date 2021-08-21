@@ -64,7 +64,7 @@ class DatabaseSeeder extends Seeder
         Specification::factory()
             ->count(20)
             ->afterCreating(function (Specification $specification) {
-                if ($specification->type == Specification::SELECT_TYPE) {
+                if ($specification->type == Specification::TYPE_SELECT) {
                     SpecificationVariant::factory()
                         ->count(4)
                         ->sequence(fn () => ['specification_id' => $specification->id])

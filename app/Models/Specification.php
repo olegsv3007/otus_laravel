@@ -11,9 +11,9 @@ class Specification extends Model
 {
     use HasFactory;
 
-    public const SELECT_TYPE = 1;
-    public const CHECKBOX_TYPE = 2;
-    public const TEXT_TYPE = 3;
+    public const TYPE_SELECT = 1;
+    public const TYPE_CHECKBOX = 2;
+    public const TYPE_TEXT = 3;
 
     public $timestamps = false;
 
