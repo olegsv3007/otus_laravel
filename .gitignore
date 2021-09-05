@@ -3,6 +3,8 @@
 /public/storage
 /public/css
 /public/js
+/public/img/hotels/*
+/public/img/apartments/*
 /public/vendor
 /storage/*.key
 /vendor

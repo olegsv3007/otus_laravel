@@ -1,7 +1,7 @@
 .cms-body {
     min-height: 100vh;
     display: grid;
-    background-color: $blue-grey-800;
+    background-color: $blue-grey-100;
     grid-template-rows: 60px auto;
     grid-template-columns: 250px auto;
     grid-template-areas:
@@ -64,5 +64,31 @@
             align-items: center;
         }
     }
+}
+
+table {
+    .clickable-row {
+        cursor: pointer;
+        transition-duration: 300ms;
+        &:hover {
+            background-color: $cyan !important;
+        }
+    }
+}
+
+.form-invisible {
+    display: none;
+}
+
+.photos-preview-container {
+    img {
+        height: 150px;
+    }
+}
+
+.preview-image-remove-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
 }
 

@@ -19,7 +19,12 @@ class CreateApartmentsTable extends Migration
             $table->unsignedSmallInteger('discount')->default(0);
             $table->string('main_image');
 
-            $table->foreign('hotel_id')->references('id')->on('hotels');
+            $table->softDeletes();
+
+            $table->foreign('hotel_id')
+                ->references('id')
+                ->on('hotels')
+                ->onDelete('cascade');
         });
     }
 

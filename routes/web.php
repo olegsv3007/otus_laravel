@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,26 +31,22 @@ Route::get('/view_history', function () {
     return view('public.view_history');
 })->name('profile.view_history');
 
-Route::get('/admin', function () {
+Route::get('/cms', function () {
     return view('cms.index');
-})->name('admin');
+})->name('cms');
 
-Route::get('/admin/settings', function () {
+Route::get('/cms/settings', function () {
     return view('cms.settings.index');
-})->name('admin.settings');
+})->name('cms.settings.index');
 
-Route::get('/admin/hotels', function () {
-    return view('cms.hotels.index');
-})->name('admin.hotels');
-
-Route::get('/admin/rooms', function () {
-    return view('cms.rooms.index');
-})->name('admin.rooms');
-
-Route::get('/admin/orders', function () {
+Route::get('/cms/orders', function () {
     return view('cms.orders.index');
-})->name('admin.orders');
+})->name('cms.orders.index');
 
-Route::get('/admin/feedbacks', function () {
+Route::get('/cms/feedbacks', function () {
     return view('cms.feedbacks.index');
-})->name('admin.feedbacks');
+})->name('cms.feedbacks.index');
+
+$cmsRouteService = app(App\Services\Routes\Providers\Cms\CmsRoutesProvider::class);
+$cmsRouteService->registerRoutes();
+

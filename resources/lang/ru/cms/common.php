@@ -6,8 +6,17 @@ return [
         'main' => 'Главная',
         'settings' => 'Настройки сайта',
         'hotels' => 'Гостиницы',
-        'rooms' => 'Номера',
+        'apartments' => 'Апартаменты',
         'orders' => 'Заказы',
         'feedbacks' => 'Отзывы',
+        'countries' => 'Страны',
+        'cities' => 'Города',
+        'organizations' => 'Организации',
     ],
+
+    'file_not_found' => 'Файл не найден',
+    'yes' => 'Да',
+    'no' => 'Нет',
+    'no_images' => 'Нет фотографий',
+    'deleted' => 'Удалено',
 ];
