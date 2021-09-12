@@ -26,12 +26,12 @@ class ApartmentRepository
             ->onEachSide($linksLimit ?? config('cms.pagination.links_limit'));
     }
 
-    public function store(array $data, array $images): Apartment|bool
+    public function store(array $data, array $images): ?Apartment
     {
         $apartment = Apartment::create($data);
 
         if (!$apartment) {
-            return false;
+            return null;
         }
 
         foreach ($images as $image) {
@@ -41,10 +41,10 @@ class ApartmentRepository
         return $apartment;
     }
 
-    public function update(array $data, Apartment $apartment, array $images): Apartment|bool
+    public function update(array $data, Apartment $apartment, array $images): ?Apartment
     {
         if (!$apartment->update($data)) {
-            return false;
+            return null;
         }
 
         foreach ($images as $image) {
@@ -54,7 +54,7 @@ class ApartmentRepository
         return $apartment;
     }
 
-    public function find($id)
+    public function find($id): ?Apartment
     {
         return Apartment::withoutGlobalScope(ActiveScope::class)->findOrFail($id);
     }
@@ -68,7 +68,7 @@ class ApartmentRepository
         return true;
     }
 
-    public function restore(Apartment $apartment)
+    public function restore(Apartment $apartment): ?bool
     {
         return $apartment->restore();
     }

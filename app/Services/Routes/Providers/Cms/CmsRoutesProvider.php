@@ -17,7 +17,7 @@ use App\Http\Controllers\Cms\Countries\CmsCountriesRestoreController;
 
 class CmsRoutesProvider
 {
-    public function registerRoutes()
+    public function registerRoutes(): void
     {
         Route::group([
             'prefix' => '/cms',

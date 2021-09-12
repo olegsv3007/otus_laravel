@@ -21,21 +21,21 @@ class OrganizationRepository
             ->onEachSide($linksLimit ?? config('cms.pagination.links_limit'));
     }
 
-    public function store(array $data): Organization|bool
+    public function store(array $data): ?Organization
     {
         $organization = Organization::create($data);
 
         if (!$organization) {
-            return false;
+            return null;
         }
 
         return $organization;
     }
 
-    public function update(array $data, Organization $organization): Organization|bool
+    public function update(array $data, Organization $organization): ?Organization
     {
         if (!$organization->update($data)) {
-            return false;
+            return null;
         }
 
         return $organization;
@@ -49,7 +49,8 @@ class OrganizationRepository
 
         return true;
     }
-    public function restore(Organization $organization)
+
+    public function restore(Organization $organization): ?bool
     {
         return $organization->restore();
     }

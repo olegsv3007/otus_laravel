@@ -27,7 +27,7 @@ class ApartmentService
         return $this->apartmentRepository->getPaginate($count, $linksLimit);
     }
 
-    public function store(array $data): Apartment|bool
+    public function store(array $data): ?Apartment
     {
         $data['main_image'] = $this->storeImage($data['main_image']);
         $images = $this->storeImages($data['images']);
@@ -36,7 +36,7 @@ class ApartmentService
         return $this->apartmentRepository->store($data, $images);
     }
 
-    public function update(array $data, Apartment $apartment): Apartment|bool
+    public function update(array $data, Apartment $apartment): ?Apartment
     {
         if (isset($data['main_image'])) {
             if ($fileName = $this->storeImage($data['main_image'])) {
@@ -59,18 +59,18 @@ class ApartmentService
         return $this->apartmentRepository->delete($apartment);
     }
 
-    private function storeImage(UploadedFile $file): string|false
+    private function storeImage(UploadedFile $file): ?string
     {
         $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
 
         if (!$file->storeAs(Apartment::FOLDER_PHOTOS, $fileName, 'images')) {
-            return false;
+            return null;
         }
 
         return $fileName;
     }
 
-    public function find($id)
+    public function find($id): ?Apartment
     {
         return $this->apartmentRepository->find($id);
     }
@@ -86,7 +86,7 @@ class ApartmentService
         return $imagesNames;
     }
 
-    public function restore(Apartment $apartment)
+    public function restore(Apartment $apartment): ?bool
     {
         return $this->apartmentRepository->restore($apartment);
     }

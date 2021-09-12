@@ -13,7 +13,7 @@
                     method="delete"
                     :route="route('cms.images.delete', ['image' => $image])"
                     class="btn-danger btn-sm preview-image-remove-btn"
-                    :id="$image->id"
+                    id="remove_image_{{ $image->id }}"
                     title=""
                 >
                     <x-icons.trash />

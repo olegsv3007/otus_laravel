@@ -11,7 +11,7 @@
                     class="btn-danger float-right"
                     :route="route(\App\Services\Routes\Providers\Cms\CmsRoutes::CMS_ORGANIZATIONS_DESTROY, ['organization_no_scope' => $organization])"
                     :title="__('cms/organizations.buttons.delete')"
-                    :id="$organization->id"
+                    id="remove_organization_{{ $organization->id }}"
                 />
                 @else
                 <x-wrappers.buttons.button-form
@@ -19,7 +19,7 @@
                     class="btn-warning float-right"
                     :route="route(\App\Services\Routes\Providers\Cms\CmsRoutes::CMS_ORGANIZATIONS_RESTORE, ['organization_no_scope' => $organization])"
                     :title="__('cms/organizations.buttons.restore')"
-                    :id="$organization->id"
+                    id="restore_organization_{{ $organization->id }}"
                 />
                 @endif
                 <form action="{{ route(\App\Services\Routes\Providers\Cms\CmsRoutes::CMS_ORGANIZATIONS_UPDATE, ['organization_no_scope' => $organization]) }}" class="mt-5 needs-validation" novalidate method="post">

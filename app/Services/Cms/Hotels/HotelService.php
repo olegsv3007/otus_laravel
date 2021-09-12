@@ -28,7 +28,7 @@ class HotelService implements ItemsForSelectInterface
         return $this->hotelRepository->getPaginate($count, $linksLimit);
     }
 
-    public function store(array $data): Hotel|bool
+    public function store(array $data): ?Hotel
     {
         if ($fileName = $this->storeHotelImage($data['main_image'])) {
             $data['main_image'] = $fileName;
@@ -36,7 +36,7 @@ class HotelService implements ItemsForSelectInterface
         return $this->hotelRepository->store($data);
     }
 
-    public function update(array $data, Hotel $hotel): Hotel|bool
+    public function update(array $data, Hotel $hotel): ?Hotel
     {
         if (isset($data['main_image'])) {
             if ($fileName = $this->storeHotelImage($data['main_image'])) {
@@ -52,12 +52,12 @@ class HotelService implements ItemsForSelectInterface
         return $this->hotelRepository->delete($hotel);
     }
 
-    public function storeHotelImage(UploadedFile $file): string|false
+    public function storeHotelImage(UploadedFile $file): ?string
     {
         $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
 
         if (!$file->storeAs(Hotel::FOLDER_PHOTOS, $fileName, 'images')) {
-            return false;
+            return null;
         }
 
         return $fileName;
@@ -68,7 +68,7 @@ class HotelService implements ItemsForSelectInterface
         return $this->get();
     }
 
-    public function resore(Hotel $hotel)
+    public function resore(Hotel $hotel): ?bool
     {
         return $this->hotelRepository->restore($hotel);
     }

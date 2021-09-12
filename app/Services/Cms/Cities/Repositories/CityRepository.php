@@ -23,21 +23,21 @@ class CityRepository
             ->onEachSide($linksLimit ?? config('cms.pagination.links_limit'));
     }
 
-    public function store(array $data): City|bool
+    public function store(array $data): ?City
     {
         $city = City::create($data);
 
         if (!$city) {
-            return false;
+            return null;
         }
 
         return $city;
     }
 
-    public function update(array $data, City $city): City|bool
+    public function update(array $data, City $city): ?City
     {
         if (!$city->update($data)) {
-            return false;
+            return null;
         }
 
         return $city;
@@ -57,7 +57,7 @@ class CityRepository
         return $this->get();
     }
 
-    public function restore(City $city)
+    public function restore(City $city): ?bool
     {
         return $city->restore();
     }

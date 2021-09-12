@@ -11,7 +11,7 @@
                     class="btn-danger float-right"
                     :route="route(\App\Services\Routes\Providers\Cms\CmsRoutes::CMS_CITIES_DESTROY, ['city_no_scope' => $city])"
                     :title="__('cms/cities.buttons.delete')"
-                    :id="$city->id"
+                    id="remove_city_{{ $city->id }}"
                 />
                 @else
                 <x-wrappers.buttons.button-form
@@ -19,7 +19,7 @@
                     class="btn-warning float-right"
                     :route="route(\App\Services\Routes\Providers\Cms\CmsRoutes::CMS_CITIES_RESTORE, ['city_no_scope' => $city])"
                     :title="__('cms/cities.buttons.restore')"
-                    :id="$city->id"
+                    id="restore_city_{{ $city->id }}"
                 />
                 @endif
                 <form action="{{ route(\App\Services\Routes\Providers\Cms\CmsRoutes::CMS_CITIES_UPDATE, ['city_no_scope' => $city]) }}" class="mt-5 needs-validation" novalidate method="post">

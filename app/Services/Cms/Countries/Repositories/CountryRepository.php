@@ -20,21 +20,21 @@ class CountryRepository
             ->onEachSide($linksLimit ?? config('cms.pagination.links_limit'));
     }
 
-    public function store(array $data): Country|bool
+    public function store(array $data): ?Country
     {
         $country = Country::create($data);
 
         if (!$country) {
-            return false;
+            return null;
         }
 
         return $country;
     }
 
-    public function update(array $data, Country $country): Country|bool
+    public function update(array $data, Country $country): ?Country
     {
         if (!$country->update($data)) {
-            return false;
+            return null;
         }
 
         return $country;
@@ -49,7 +49,7 @@ class CountryRepository
         return true;
     }
 
-    public function restore(Country $country)
+    public function restore(Country $country): ?bool
     {
         return $country->restore();
     }

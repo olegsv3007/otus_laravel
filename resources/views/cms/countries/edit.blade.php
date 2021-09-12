@@ -11,7 +11,7 @@
                     class="btn-danger float-right"
                     :route="route(\App\Services\Routes\Providers\Cms\CmsRoutes::CMS_COUNTRIES_DESTROY, ['country_no_scope' => $country])"
                     :title="__('cms/countries.buttons.delete')"
-                    :id="$country->id"
+                    id="remove_country_{{ $country->id }}"
                 />
                 @else
                 <x-wrappers.buttons.button-form
@@ -19,7 +19,7 @@
                     class="btn-warning float-right"
                     :route="route(\App\Services\Routes\Providers\Cms\CmsRoutes::CMS_COUNTRIES_RESTORE, ['country_no_scope' => $country])"
                     :title="__('cms/countries.buttons.restore')"
-                    :id="$country->id"
+                    id="restore_country_{{ $country->id }}"
                 />
                 @endif
                 <form action="{{ route(\App\Services\Routes\Providers\Cms\CmsRoutes::CMS_COUNTRIES_UPDATE, ['country_no_scope' => $country]) }}" class="mt-5 needs-validation" novalidate method="post">

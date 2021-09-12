@@ -26,12 +26,12 @@ class CountryService implements ItemsForSelectInterface
         return $this->countryRepository->getPaginate($count, $linksLimit);
     }
 
-    public function store(array $data): Country|bool
+    public function store(array $data): ?Country
     {
         return $this->countryRepository->store($data);
     }
 
-    public function update(array $data, Country $country): Country|bool
+    public function update(array $data, Country $country): ?Country
     {
         return $this->countryRepository->update($data, $country);
     }
@@ -46,7 +46,7 @@ class CountryService implements ItemsForSelectInterface
         return $this->get();
     }
 
-    public function restore(Country $country)
+    public function restore(Country $country): ?bool
     {
         return $this->countryRepository->restore($country);
     }

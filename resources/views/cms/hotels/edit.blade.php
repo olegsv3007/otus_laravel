@@ -11,7 +11,7 @@
                     class="btn-danger float-right"
                     :route="route(\App\Services\Routes\Providers\Cms\CmsRoutes::CMS_HOTELS_DESTROY, ['hotel_no_scope' => $hotel])"
                     :title="__('cms/hotels.buttons.delete')"
-                    :id="$hotel->id"
+                    id="remove_hotel_{{ $hotel->id }}"
                 />
                 @else
                 <x-wrappers.buttons.button-form
@@ -19,7 +19,7 @@
                     class="btn-warning float-right"
                     :route="route(\App\Services\Routes\Providers\Cms\CmsRoutes::CMS_HOTELS_RESTORE, ['hotel_no_scope' => $hotel])"
                     :title="__('cms/hotels.buttons.restore')"
-                    :id="$hotel->id"
+                    id="restore_hotel_{{ $hotel->id }}"
                 />
                 @endif
                 <form

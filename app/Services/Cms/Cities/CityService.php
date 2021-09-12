@@ -26,12 +26,12 @@ class CityService implements ItemsForSelectInterface
         return $this->cityRepository->getPaginate($count, $linksLimit);
     }
 
-    public function store(array $data): City|bool
+    public function store(array $data): ?City
     {
         return $this->cityRepository->store($data);
     }
 
-    public function update(array $data, City $city): City|bool
+    public function update(array $data, City $city): ?City
     {
         return $this->cityRepository->update($data, $city);
     }
@@ -46,7 +46,7 @@ class CityService implements ItemsForSelectInterface
         return $this->cityRepository->getItemsForSelect();
     }
 
-    public function restore(City $city)
+    public function restore(City $city): ?bool
     {
         return $this->cityRepository->restore($city);
     }

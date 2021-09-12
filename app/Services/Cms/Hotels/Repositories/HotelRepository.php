@@ -27,21 +27,21 @@ class HotelRepository
             ->onEachSide($linksLimit ?? config('cms.pagination.links_limit'));
     }
 
-    public function store(array $data): Hotel|bool
+    public function store(array $data): ?Hotel
     {
         $hotel = Hotel::create($data);
 
         if (!$hotel) {
-            return false;
+            return null;
         }
 
         return $hotel;
     }
 
-    public function update(array $data, Hotel $hotel): Hotel|bool
+    public function update(array $data, Hotel $hotel): ?Hotel
     {
         if (!$hotel->update($data)) {
-            return false;
+            return null;
         }
 
         return $hotel;
@@ -56,7 +56,7 @@ class HotelRepository
         return true;
     }
 
-    public function restore(Hotel $hotel)
+    public function restore(Hotel $hotel): ?bool
     {
         return $hotel->restore();
     }

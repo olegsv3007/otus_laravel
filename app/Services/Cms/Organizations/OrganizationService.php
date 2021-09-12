@@ -25,12 +25,12 @@ class OrganizationService implements ItemsForSelectInterface
         return $this->organizationRepository->getPaginate($count, $linksLimit);
     }
 
-    public function store(array $data): Organization|bool
+    public function store(array $data): ?Organization
     {
         return $this->organizationRepository->store($data);
     }
 
-    public function update(array $data, Organization $organization): Organization|bool
+    public function update(array $data, Organization $organization): ?Organization
     {
         return $this->organizationRepository->update($data, $organization);
     }
@@ -45,7 +45,7 @@ class OrganizationService implements ItemsForSelectInterface
         return $this->get();
     }
 
-    public function restore(Organization $organization)
+    public function restore(Organization $organization): ?bool
     {
         return $this->organizationRepository->restore($organization);
     }

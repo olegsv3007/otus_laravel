@@ -15,7 +15,7 @@ class StoreApartmentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'active' => '',
+            'active' => 'nullable',
             'title' => 'required',
             'hotel_id' => [
                 'required',

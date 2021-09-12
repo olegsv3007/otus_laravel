@@ -5,10 +5,7 @@ let rows = document.getElementsByClassName('clickable-row');
 
  for (let i = 0; i < rows.length; i++) {
      rows[i].addEventListener('click', e => {
-         e.preventDefault();
-         if (e.target.closest('tr').dataset.href) {
-             document.location = e.target.closest('tr').dataset.href;
-         }
+         document.location = e.currentTarget.closest('tr').dataset.href;
      });
  }
 
@@ -16,7 +13,7 @@ let rows = document.getElementsByClassName('clickable-row');
 let buttons = document.getElementsByClassName('btn-form');
  for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', e => {
-        let id = e.target.dataset.form;
+        let id = e.currentTarget.dataset.form;
         document.getElementById(id).submit();
     });
  }
