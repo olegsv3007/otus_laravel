@@ -12,7 +12,7 @@ class ApartmentFactory extends Factory
     public function definition(): array
     {
         $discount = $this->faker->boolean(95) ? 0 : $this->faker->randomNumber(2);
-        $image = "/faker/" . $this->faker->image(storage_path('app/public/faker'), 300, 200, null, false);
+        $image = $this->faker->image(public_path('/img/' . Apartment::FOLDER_PHOTOS), 300, 200, null, false);
 
         return [
             'active' => $this->faker->boolean(95),

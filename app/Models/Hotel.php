@@ -10,14 +10,18 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 
 class Hotel extends Model
 {
     use HasFactory;
-
-    public $timestamps = false;
+    use SoftDeletes;
 
     protected $guarded = [];
+
+    public $timestamps = false;
+    public const FOLDER_PHOTOS = 'hotels';
 
     protected static function booted()
     {
@@ -91,6 +95,15 @@ class Hotel extends Model
     public function images(): MorphMany
     {
         return $this->morphMany(Image::class, 'imaginable');
+    }
+
+    /**
+     * @return string
+     * Метод для получения URL у основному изображению отеля
+     */
+    public function getMainImageSrcAttribute(): string
+    {
+        return asset(Storage::disk('images')->url(self::FOLDER_PHOTOS . '/' . $this->main_image));
     }
 
 }

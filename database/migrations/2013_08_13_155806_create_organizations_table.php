@@ -14,6 +14,8 @@ class CreateOrganizationsTable extends Migration
             $table->string('slug');
             $table->string('phone');
             $table->string('email');
+
+            $table->softDeletes();
         });
     }
 

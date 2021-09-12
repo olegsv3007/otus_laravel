@@ -10,12 +10,18 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Storage;
 
 class Apartment extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     public $timestamps = false;
+
+    public const FOLDER_PHOTOS = 'apartments';
 
     protected $guarded = [];
 
@@ -35,7 +41,7 @@ class Apartment extends Model
      */
     public function hotel(): BelongsTo
     {
-        return $this->belongsTo(Hotel::class);
+        return $this->belongsTo(Hotel::class)->withoutGlobalScope(new ActiveScope());
     }
 
     /**
@@ -72,6 +78,15 @@ class Apartment extends Model
     public function images(): MorphMany
     {
         return $this->morphMany(Image::class, 'imaginable');
+    }
+
+    /**
+     * @return string
+     * Метод для получения URL к основному изображению апартаментов
+     */
+    public function getMainImageSrcAttribute(): string
+    {
+        return asset(Storage::disk('images')->url(self::FOLDER_PHOTOS . '/' . $this->main_image));
     }
 
 }

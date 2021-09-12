@@ -12,10 +12,15 @@ class CreateCitiesTable extends Migration
             $table->id();
             $table->string('name');
             $table->unsignedBigInteger('country_id');
-            $table->float('latitude');
-            $table->float('longitude');
+            $table->double('latitude');
+            $table->double('longitude');
 
-            $table->foreign('country_id')->references('id')->on('countries');
+            $table->softDeletes();
+
+            $table->foreign('country_id')
+                ->references('id')
+                ->on('countries')
+                ->onDelete('cascade');
         });
     }
 

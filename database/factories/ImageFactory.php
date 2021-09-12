@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Apartment;
 use App\Models\Image;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -11,10 +12,10 @@ class ImageFactory extends Factory
 
     public function definition()
     {
-        $path = "/faker/" . $this->faker->image(storage_path('app/public/faker'), 300, 200, null, false);
+        $path = $this->faker->image(public_path('/img/' . Apartment::FOLDER_PHOTOS), 300, 200, null, false);
 
         return [
-            'path' => $path,
+            'filename' => $path,
         ];
     }
 }

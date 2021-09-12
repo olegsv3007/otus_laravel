@@ -17,14 +17,23 @@ class CreateHotelsTable extends Migration
             $table->string('slug');
             $table->string('phone');
             $table->string('email');
-            $table->float('latitude');
-            $table->float('longitude');
+            $table->double('latitude');
+            $table->double('longitude');
             $table->string('address');
             $table->unsignedSmallInteger('discount')->default(0);
             $table->string('main_image');
 
-            $table->foreign('organization_id')->references('id')->on('organizations');
-            $table->foreign('city_id')->references('id')->on('cities');
+            $table->softDeletes();
+
+            $table->foreign('organization_id')
+                ->references('id')
+                ->on('organizations')
+                ->onDelete('cascade');
+
+            $table->foreign('city_id')
+                ->references('id')
+                ->on('cities')
+                ->onDelete('cascade');
         });
     }
 
