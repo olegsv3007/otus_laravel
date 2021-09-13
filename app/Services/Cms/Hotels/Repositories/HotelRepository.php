@@ -3,6 +3,7 @@
 namespace App\Services\Cms\Hotels\Repositories;
 
 use App\Models\Hotel;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -10,12 +11,15 @@ class HotelRepository
 {
     public function get(): Collection
     {
-        return Hotel::withoutGlobalScopes()->get();
+        return Hotel::withoutGlobalScopes()
+            ->where('organization_id', auth()->user()->organization_id)
+            ->get();
     }
 
-    public function getPaginate(int $count = null, int $linksLimit = null): LengthAwarePaginator
+    public function getPaginate(int $count = null, int $linksLimit = null): ?LengthAwarePaginator
     {
         return Hotel::withoutGlobalScopes()
+            ->where('organization_id', auth()->user()->organization_id)
             ->with([
                 'organization' => function ($query) {
                     return $query->withTrashed();
@@ -27,9 +31,12 @@ class HotelRepository
             ->onEachSide($linksLimit ?? config('cms.pagination.links_limit'));
     }
 
-    public function store(array $data): ?Hotel
+    public function store(array $data, User $user): ?Hotel
     {
-        $hotel = Hotel::create($data);
+        $hotel = $user
+            ->organization
+            ->hotels()
+            ->create($data);
 
         if (!$hotel) {
             return null;

@@ -11,6 +11,8 @@ class CmsHotelsRestoreController extends BaseCmsHotelsController
 
     public function __invoke(Hotel $hotel): RedirectResponse
     {
+        $this->authorize('restore', $hotel);
+
         $this->getHotelService()->resore($hotel);
 
         return redirect()->route(CmsRoutes::CMS_HOTELS_INDEX);
