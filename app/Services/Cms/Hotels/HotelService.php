@@ -4,6 +4,7 @@ namespace App\Services\Cms\Hotels;
 
 use App\Models\City;
 use App\Models\Hotel;
+use App\Models\User;
 use App\Services\Cms\Hotels\Repositories\HotelRepository;
 use App\Services\ItemsForSelectInterface;
 use Illuminate\Database\Eloquent\Collection;
@@ -23,17 +24,20 @@ class HotelService implements ItemsForSelectInterface
         return $this->hotelRepository->get();
     }
 
-    public function getPaginate(int $count = null, int $linksLimit = null): LengthAwarePaginator
+    public function getPaginate(int $count = null, int $linksLimit = null): ?LengthAwarePaginator
     {
-        return $this->hotelRepository->getPaginate($count, $linksLimit);
+        return
+            $this->hotelRepository->getPaginate($count, $linksLimit) ??
+            new LengthAwarePaginator([], 0, 1);
     }
 
-    public function store(array $data): ?Hotel
+    public function store(array $data, User $user): ?Hotel
     {
         if ($fileName = $this->storeHotelImage($data['main_image'])) {
             $data['main_image'] = $fileName;
         }
-        return $this->hotelRepository->store($data);
+
+        return $this->hotelRepository->store($data, $user);
     }
 
     public function update(array $data, Hotel $hotel): ?Hotel

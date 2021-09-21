@@ -21,34 +21,42 @@ return [
         'cms.settings.index' => [
             'title' => 'cms/common.menu.settings',
             'icon' => 'icons.settings',
+            'role' => 'admin',
         ],
         'cms.countries.index' => [
             'title' => 'cms/common.menu.countries',
             'icon' => 'icons.country',
+            'role' => 'admin',
         ],
         'cms.cities.index' => [
             'title' => 'cms/common.menu.cities',
             'icon' => 'icons.city',
+            'role' => 'admin',
         ],
         'cms.organizations.index' => [
             'title' => 'cms/common.menu.organizations',
             'icon' => 'icons.organization',
+            'role' => 'admin',
         ],
         'cms.hotels.index' => [
             'title' => 'cms/common.menu.hotels',
             'icon' => 'icons.building',
+            'role' => 'manager',
         ],
         'cms.apartments.index' => [
             'title' => 'cms/common.menu.apartments',
             'icon' => 'icons.apartment',
+            'role' => 'manager',
         ],
         'cms.orders.index' => [
             'title' => 'cms/common.menu.orders',
             'icon' => 'icons.book',
+            'role' => 'manager',
         ],
         'cms.feedbacks.index' => [
             'title' => 'cms/common.menu.feedbacks',
             'icon' => 'icons.pen',
+            'role' => 'moderator',
         ],
     ],
 ];

@@ -31,21 +31,27 @@ Route::get('/view_history', function () {
     return view('public.view_history');
 })->name('profile.view_history');
 
-Route::get('/cms', function () {
-    return view('cms.index');
-})->name('cms');
+Route::group([
+    'middleware' => 'auth',
+    'prefix' => '/cms',
 
-Route::get('/cms/settings', function () {
-    return view('cms.settings.index');
-})->name('cms.settings.index');
+], function () {
+    Route::get('', function () {
+        return view('cms.index');
+    })->name('cms');
 
-Route::get('/cms/orders', function () {
-    return view('cms.orders.index');
-})->name('cms.orders.index');
+    Route::get('/cms/settings', function () {
+        return view('cms.settings.index');
+    })->name('cms.settings.index');
 
-Route::get('/cms/feedbacks', function () {
-    return view('cms.feedbacks.index');
-})->name('cms.feedbacks.index');
+    Route::get('/cms/orders', function () {
+        return view('cms.orders.index');
+    })->name('cms.orders.index');
+
+    Route::get('/cms/feedbacks', function () {
+        return view('cms.feedbacks.index');
+    })->name('cms.feedbacks.index');
+});
 
 $cmsRouteService = app(App\Services\Routes\Providers\Cms\CmsRoutesProvider::class);
 $cmsRouteService->registerRoutes();

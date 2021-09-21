@@ -53,13 +53,6 @@
                     />
 
                     <x-wrappers.forms.bs-model-select
-                        :service="App\Services\Cms\Organizations\OrganizationService::class"
-                        :default="$hotel->organization_id"
-                        name="organization_id"
-                        :label="__('cms/hotels.titles.organization')"
-                    />
-
-                    <x-wrappers.forms.bs-model-select
                         :service="App\Services\Cms\Cities\CityService::class"
                         :default="$hotel->city_id"
                         name="city_id"

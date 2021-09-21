@@ -34,13 +34,16 @@ class CmsApartmentsController extends BaseCmsApartmentsController
 
     public function edit(Apartment $apartment): View
     {
+        $this->authorize('view', $apartment);
+
         return view('cms.apartments.edit', compact(['apartment']));
     }
 
     public function update(UpdateApartmentRequest $request, Apartment $apartment): RedirectResponse
     {
-        $validatedData = $request->validated();
+        $this->authorize('update', $apartment);
 
+        $validatedData = $request->validated();
         $this->getApartmentService()->update($validatedData, $apartment);
 
         return redirect()->route(CmsRoutes::CMS_APARTMENTS_INDEX);
@@ -48,6 +51,7 @@ class CmsApartmentsController extends BaseCmsApartmentsController
 
     public function destroy(Apartment $apartment): RedirectResponse
     {
+        $this->authorize('delete', $apartment);
         $this->getApartmentService()->delete($apartment);
 
         return redirect()->route(CmsRoutes::CMS_APARTMENTS_INDEX);

@@ -19,6 +19,9 @@ class ApartmentRepository
     public function getPaginate(int $count = null, int $linksLimit = null): LengthAwarePaginator
     {
         return Apartment::withoutGlobalScopes()
+            ->whereHas('hotel', function($query) {
+                return $query->where('organization_id', auth()->user()->organization_id);
+            })
             ->with(['hotel' => function ($query) {
                 return $query->withTrashed();
             }])

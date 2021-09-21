@@ -25,10 +25,6 @@ class StoreHotelRequest extends FormRequest
                 'required',
                 'exists:cities,id',
             ],
-            'organization_id' => [
-                'required',
-                'exists:organizations,id'
-            ],
             'slug' => [
                 'required',
                 'unique:hotels,slug,' . $hotel_id ?? '',
