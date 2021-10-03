@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Log;
 
 class HotelService implements ItemsForSelectInterface
 {
@@ -37,7 +38,13 @@ class HotelService implements ItemsForSelectInterface
             $data['main_image'] = $fileName;
         }
 
-        return $this->hotelRepository->store($data, $user);
+        $result = $this->hotelRepository->store($data, $user);
+
+        $result ?
+            Log::info("User {$user->name} ({$user->id}) created new hotel.", ['hotel' => $data]) :
+            Log::critical("User {$user->name} ({$user->id}) couldn't create new hotel.", ['hotel' => $data]);
+
+        return $result;
     }
 
     public function update(array $data, Hotel $hotel): ?Hotel
@@ -48,12 +55,28 @@ class HotelService implements ItemsForSelectInterface
             }
         }
 
-        return $this->hotelRepository->update($data, $hotel);
+        $oldHotelData = $hotel->attributesToArray();
+        $result = $this->hotelRepository->update($data, $hotel);
+        $actingUser = auth()->user();
+
+        $result ?
+            Log::info("User {$actingUser->name} ({$actingUser->id}) updated hotel.", ['oldHotelData' => $oldHotelData, 'newHotelData' => $hotel]) :
+            Log::critical("User {$actingUser->name} ({$actingUser->id}) couldn't update hotel.", ['oldHotelData' => $oldHotelData, 'newHotelData' => $data]);
+
+        return $result;
     }
 
     public function delete(Hotel $hotel): bool
     {
-        return $this->hotelRepository->delete($hotel);
+        $result = $this->hotelRepository->delete($hotel);
+        $actingUser = auth()->user();
+
+        $result ?
+            Log::info("User {$actingUser->name} ({$actingUser->id}) deleted hotel.", ['hotel' => $hotel]) :
+            Log::critical("User {$actingUser->name} ({$actingUser->id}) couldn't delete hotel.", ['hotel' => $hotel]);
+
+
+        return $result;
     }
 
     public function storeHotelImage(UploadedFile $file): ?string
@@ -72,7 +95,7 @@ class HotelService implements ItemsForSelectInterface
         return $this->get();
     }
 
-    public function resore(Hotel $hotel): ?bool
+    public function restore(Hotel $hotel): ?bool
     {
         return $this->hotelRepository->restore($hotel);
     }

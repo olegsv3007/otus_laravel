@@ -13,7 +13,7 @@ class CmsHotelsRestoreController extends BaseCmsHotelsController
     {
         $this->authorize('restore', $hotel);
 
-        $this->getHotelService()->resore($hotel);
+        $this->getHotelService()->restore($hotel);
 
         return redirect()->route(CmsRoutes::CMS_HOTELS_INDEX);
     }
