@@ -13,6 +13,6 @@ class CmsOrganizationsRestoreController extends BaseCmsOrganizationsController
     {
         $this->getOrganizationService()->restore($organization);
 
-        return redirect()->route(CmsRoutes::CMS_ORGANIZATIONS_INDEX);
+        return redirect()->route(CmsRoutes::CMS_ORGANIZATIONS_INDEX, ['locale' => $this->locale]);
     }
 }

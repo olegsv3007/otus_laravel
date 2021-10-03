@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
             <div class="col-8">
                 <form
-                    action="{{ route(\App\Services\Routes\Providers\Cms\CmsRoutes::CMS_HOTELS_STORE) }}"
+                    action="{{ route(\App\Services\Routes\Providers\Cms\CmsRoutes::CMS_HOTELS_STORE, ['locale' => $locale]) }}"
                     class="mt-5 needs-validation"
                     novalidate
                     method="post"

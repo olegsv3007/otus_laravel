@@ -8,6 +8,7 @@ use App\Http\Controllers\Cms\Apartments\Requests\StoreApartmentRequest;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Services\Routes\Providers\Cms\CmsRoutes;
+use Illuminate\Support\Facades\App;
 
 class CmsApartmentsController extends BaseCmsApartmentsController
 {
@@ -29,7 +30,7 @@ class CmsApartmentsController extends BaseCmsApartmentsController
         $validatedData = $request->validated();
         $this->getApartmentService()->store($validatedData);
 
-        return redirect()->route(CmsRoutes::CMS_APARTMENTS_INDEX);
+        return redirect()->route(CmsRoutes::CMS_APARTMENTS_INDEX, ['locale' => $this->locale]);
     }
 
     public function edit(Apartment $apartment): View
@@ -46,7 +47,7 @@ class CmsApartmentsController extends BaseCmsApartmentsController
         $validatedData = $request->validated();
         $this->getApartmentService()->update($validatedData, $apartment);
 
-        return redirect()->route(CmsRoutes::CMS_APARTMENTS_INDEX);
+        return redirect()->route(CmsRoutes::CMS_APARTMENTS_INDEX, ['locale' => $this->locale]);
     }
 
     public function destroy(Apartment $apartment): RedirectResponse
@@ -54,6 +55,6 @@ class CmsApartmentsController extends BaseCmsApartmentsController
         $this->authorize('delete', $apartment);
         $this->getApartmentService()->delete($apartment);
 
-        return redirect()->route(CmsRoutes::CMS_APARTMENTS_INDEX);
+        return redirect()->route(CmsRoutes::CMS_APARTMENTS_INDEX, ['locale' => $this->locale]);
     }
 }

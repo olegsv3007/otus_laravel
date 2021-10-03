@@ -5,7 +5,7 @@
         <h2 class="text-center">{{ __('cms/organizations.headers.create') }}</h2>
         <div class="row justify-content-center">
             <div class="col-8">
-                <form action="{{ route(\App\Services\Routes\Providers\Cms\CmsRoutes::CMS_ORGANIZATIONS_STORE) }}" class="mt-5 needs-validation" novalidate method="post">
+                <form action="{{ route(\App\Services\Routes\Providers\Cms\CmsRoutes::CMS_ORGANIZATIONS_STORE, ['locale' => $locale]) }}" class="mt-5 needs-validation" novalidate method="post">
                     @csrf
                     @method('post')
 

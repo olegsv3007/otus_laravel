@@ -13,6 +13,6 @@ class CmsCountriesRestoreController extends BaseCmsCountriesController
     {
         $this->getCountryService()->restore($country);
 
-        return redirect()->route(CmsRoutes::CMS_COUNTRIES_INDEX);
+        return redirect()->route(CmsRoutes::CMS_COUNTRIES_INDEX, ['locale' => $this->locale]);
     }
 }

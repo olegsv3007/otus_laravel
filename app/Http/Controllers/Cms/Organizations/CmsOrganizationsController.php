@@ -28,7 +28,7 @@ class CmsOrganizationsController extends BaseCmsOrganizationsController
         $validatedData = $request->validated();
         $this->getOrganizationService()->store($validatedData);
 
-        return redirect()->route(CmsRoutes::CMS_ORGANIZATIONS_INDEX);
+        return redirect()->route(CmsRoutes::CMS_ORGANIZATIONS_INDEX, ['locale' => $this->locale]);
     }
 
     public function edit(Organization $organization): View
@@ -41,13 +41,13 @@ class CmsOrganizationsController extends BaseCmsOrganizationsController
         $validatedData = $request->validated();
         $this->getOrganizationService()->update($validatedData, $organization);
 
-        return redirect()->route(CmsRoutes::CMS_ORGANIZATIONS_INDEX);
+        return redirect()->route(CmsRoutes::CMS_ORGANIZATIONS_INDEX, ['locale' => $this->locale]);
     }
 
     public function destroy(Organization $organization): RedirectResponse
     {
         $this->getOrganizationService()->delete($organization);
 
-        return redirect()->route(CmsRoutes::CMS_ORGANIZATIONS_INDEX);
+        return redirect()->route(CmsRoutes::CMS_ORGANIZATIONS_INDEX, ['locale' => $this->locale]);
     }
 }
