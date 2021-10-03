@@ -35,7 +35,10 @@ class CmsHotelRoutesTest extends TestCase
                 ->count(1)
                 ->has(Hotel::factory()
                     ->count(1)
-                    ->sequence(fn () => ['organization_id' => $organization->id])
+                    ->sequence(fn () => [
+                        'active' => 1,
+                        'organization_id' => $organization->id,
+                    ])
                 )
             )
             ->create();

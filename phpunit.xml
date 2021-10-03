@@ -11,6 +11,7 @@
         <testsuite name="Feature">
             <directory suffix="Test.php">./tests/Feature</directory>
             <directory suffix="Test.php">./tests/Feature/Routes/Cms</directory>
+            <directory suffix="Test.php">./tests/Feature/Routes/Public</directory>
         </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">
