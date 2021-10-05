@@ -25,10 +25,14 @@ class ApartmentRepository
 
     public function getPaginate(int $organizationId, int $count = null, int $linksLimit = null): LengthAwarePaginator
     {
+        $itemsPerPage = $count ?? config('cms.pagination.items_per_page');
+        $linksLimit = $linksLimit ?? config('cms.pagination.links_limit');
+        $currentPage = request()->get('page', 1);
+
         return Cache::tags([Apartment::CACHE_TAG, Hotel::CACHE_TAG])->remember(
-            "organization:$organizationId:apartments:all_paginated",
+            "apartments:all:organization:$organizationId:per_page:{$itemsPerPage}:links_limit:{$linksLimit}:currentPage:{$currentPage}",
             config('cms.cache.lifetime'),
-            function() {
+            function() use ($itemsPerPage, $linksLimit) {
                 return Apartment::withoutGlobalScopes()
                     ->whereHas('hotel', function($query) {
                         return $query->where('organization_id', auth()->user()->organization_id);
@@ -36,8 +40,8 @@ class ApartmentRepository
                     ->with(['hotel' => function ($query) {
                         return $query->withTrashed();
                     }])
-                    ->paginate($count ?? config('cms.pagination.items_per_page'))
-                    ->onEachSide($linksLimit ?? config('cms.pagination.links_limit'));
+                    ->paginate($itemsPerPage)
+                    ->onEachSide($linksLimit);
             }
         );
     }

@@ -23,16 +23,20 @@ class CityRepository
 
     public function getPaginate(int $count = null, int $linksLimit = null): LengthAwarePaginator
     {
+        $itemsPerPage = $count ?? config('cms.pagination.items_per_page');
+        $linksLimit = $linksLimit ?? config('cms.pagination.links_limit');
+        $currentPage = request()->get('page', 1);
+
         return Cache::tags([City::CACHE_TAG, Country::CACHE_TAG])->remember(
-            'cms_paginated_cities',
+            "cms_paginated_cities:all:per_page:{$itemsPerPage}:links_limit:{$linksLimit}:currentPage:{$currentPage}",
             config('cms.cache.lifetime'),
-            function () {
+            function () use ($itemsPerPage, $linksLimit) {
                 return City::withTrashed()
                     ->with(['country' => function ($query) {
                         return $query->withTrashed();
                     }])
-                    ->paginate($count ?? config('cms.pagination.items_per_page'))
-                    ->onEachSide($linksLimit ?? config('cms.pagination.links_limit'));
+                    ->paginate($itemsPerPage)
+                    ->onEachSide($linksLimit );
             });
     }
 

@@ -22,13 +22,17 @@ class CountryRepository
 
     public function getPaginate(int $count = null, int $linksLimit = null): LengthAwarePaginator
     {
+        $itemsPerPage = $count ?? config('cms.pagination.items_per_page');
+        $linksLimit = $linksLimit ?? config('cms.pagination.links_limit');
+        $currentPage = request()->get('page', 1);
+
         return Cache::tags([Country::CACHE_TAG])->remember(
-            'cms_paginated_countries',
+            "cms_paginated_countries:all:per_page:{$itemsPerPage}:links_limit:{$linksLimit}:currentPage:{$currentPage}",
             config('cms.cache.lifetime'),
-            function() {
+            function() use ($itemsPerPage, $linksLimit) {
                 return Country::withoutGlobalScopes()
-                    ->paginate($count ?? config('cms.pagination.items_per_page'))
-                    ->onEachSide($linksLimit ?? config('cms.pagination.links_limit'));
+                    ->paginate($itemsPerPage)
+                    ->onEachSide($linksLimit);
              });
     }
 
