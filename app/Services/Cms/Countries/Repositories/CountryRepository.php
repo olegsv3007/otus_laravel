@@ -5,19 +5,31 @@ namespace App\Services\Cms\Countries\Repositories;
 use App\Models\Country;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Cache;
 
 class CountryRepository
 {
     public function get(): Collection
     {
-        return Country::withoutGlobalScopes()->get();
+        return Cache::tags([Country::CACHE_TAG])
+            ->remember(
+                'cmd_all_countries',
+                config('cms.cache.lifetime'),
+                function() {
+                    return Country::withoutGlobalScopes()->get();
+                });
     }
 
     public function getPaginate(int $count = null, int $linksLimit = null): LengthAwarePaginator
     {
-        return Country::withoutGlobalScopes()
-            ->paginate($count ?? config('cms.pagination.items_per_page'))
-            ->onEachSide($linksLimit ?? config('cms.pagination.links_limit'));
+        return Cache::tags([Country::CACHE_TAG])->remember(
+            'cms_paginated_countries',
+            config('cms.cache.lifetime'),
+            function() {
+                return Country::withoutGlobalScopes()
+                    ->paginate($count ?? config('cms.pagination.items_per_page'))
+                    ->onEachSide($linksLimit ?? config('cms.pagination.links_limit'));
+             });
     }
 
     public function store(array $data): ?Country

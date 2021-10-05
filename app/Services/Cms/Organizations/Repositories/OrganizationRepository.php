@@ -6,19 +6,32 @@ use App\Models\Hotel;
 use App\Models\Organization;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Cache;
 
 class OrganizationRepository
 {
     public function get(): Collection
     {
-        return Organization::withoutGlobalScopes()->get();
+        return Cache::tags([Organization::CACHE_TAG])->remember(
+            'cms_all_organizations',
+            config('cms.cache.lifetime'),
+            function() {
+                return Organization::withoutGlobalScopes()->get();
+            }
+        );
     }
 
     public function getPaginate(int $count = null, int $linksLimit = null): LengthAwarePaginator
     {
-        return Organization::withTrashed()
-            ->paginate($count ?? config('cms.pagination.items_per_page'))
-            ->onEachSide($linksLimit ?? config('cms.pagination.links_limit'));
+        return Cache::tags([Organization::CACHE_TAG])->remember(
+            'cms_paginated_organizations',
+            config('cms.cache.lifetime'),
+            function() {
+                return Organization::withTrashed()
+                    ->paginate($count ?? config('cms.pagination.items_per_page'))
+                    ->onEachSide($linksLimit ?? config('cms.pagination.links_limit'));
+                }
+        );
     }
 
     public function store(array $data): ?Organization
