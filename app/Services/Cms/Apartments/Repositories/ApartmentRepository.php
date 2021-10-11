@@ -3,30 +3,47 @@
 namespace App\Services\Cms\Apartments\Repositories;
 
 use App\Models\Apartment;
+use App\Models\Hotel;
 use App\Models\Image;
 use App\Scopes\ActiveScope;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Cache;
 
 class ApartmentRepository
 {
     public function get(): Collection
     {
-        return Apartment::withoutGlobalScopes()
-            ->get();
+        return Cache::tags([Apartment::CACHE_TAG])->remember(
+            'apartments:all',
+            config('cms.cache.lifetime'),
+            function() {
+                return Apartment::withoutGlobalScopes()->get();
+            }
+        );
     }
 
-    public function getPaginate(int $count = null, int $linksLimit = null): LengthAwarePaginator
+    public function getPaginate(int $organizationId, int $count = null, int $linksLimit = null): LengthAwarePaginator
     {
-        return Apartment::withoutGlobalScopes()
-            ->whereHas('hotel', function($query) {
-                return $query->where('organization_id', auth()->user()->organization_id);
-            })
-            ->with(['hotel' => function ($query) {
-                return $query->withTrashed();
-            }])
-            ->paginate($count ?? config('cms.pagination.items_per_page'))
-            ->onEachSide($linksLimit ?? config('cms.pagination.links_limit'));
+        $itemsPerPage = $count ?? config('cms.pagination.items_per_page');
+        $linksLimit = $linksLimit ?? config('cms.pagination.links_limit');
+        $currentPage = request()->get('page', 1);
+
+        return Cache::tags([Apartment::CACHE_TAG, Hotel::CACHE_TAG])->remember(
+            "apartments:all:organization:$organizationId:per_page:{$itemsPerPage}:links_limit:{$linksLimit}:currentPage:{$currentPage}",
+            config('cms.cache.lifetime'),
+            function() use ($itemsPerPage, $linksLimit) {
+                return Apartment::withoutGlobalScopes()
+                    ->whereHas('hotel', function($query) {
+                        return $query->where('organization_id', auth()->user()->organization_id);
+                    })
+                    ->with(['hotel' => function ($query) {
+                        return $query->withTrashed();
+                    }])
+                    ->paginate($itemsPerPage)
+                    ->onEachSide($linksLimit);
+            }
+        );
     }
 
     public function store(array $data, array $images): ?Apartment

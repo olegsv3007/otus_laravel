@@ -22,6 +22,7 @@ class Hotel extends Model
 
     public $timestamps = false;
     public const FOLDER_PHOTOS = 'hotels';
+    public const CACHE_TAG = 'hotel';
 
     protected static function booted()
     {
