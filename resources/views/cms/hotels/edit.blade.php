@@ -9,7 +9,7 @@
                 <x-wrappers.buttons.button-form
                     method="delete"
                     class="btn-danger float-right"
-                    :route="route(\App\Services\Routes\Providers\Cms\CmsRoutes::CMS_HOTELS_DESTROY, ['hotel_no_scope' => $hotel])"
+                    :route="route(\App\Services\Routes\Providers\Cms\CmsRoutes::CMS_HOTELS_DESTROY, ['hotel_no_scope' => $hotel,  'locale' => $locale])"
                     :title="__('cms/hotels.buttons.delete')"
                     id="remove_hotel_{{ $hotel->id }}"
                 />
@@ -17,13 +17,13 @@
                 <x-wrappers.buttons.button-form
                     method="patch"
                     class="btn-warning float-right"
-                    :route="route(\App\Services\Routes\Providers\Cms\CmsRoutes::CMS_HOTELS_RESTORE, ['hotel_no_scope' => $hotel])"
+                    :route="route(\App\Services\Routes\Providers\Cms\CmsRoutes::CMS_HOTELS_RESTORE, ['hotel_no_scope' => $hotel, 'locale' => $locale])"
                     :title="__('cms/hotels.buttons.restore')"
                     id="restore_hotel_{{ $hotel->id }}"
                 />
                 @endif
                 <form
-                    action="{{ route(\App\Services\Routes\Providers\Cms\CmsRoutes::CMS_HOTELS_UPDATE, ['hotel_no_scope' => $hotel]) }}"
+                    action="{{ route(\App\Services\Routes\Providers\Cms\CmsRoutes::CMS_HOTELS_UPDATE, ['hotel_no_scope' => $hotel, 'locale' => $locale]) }}"
                     class="mt-5 needs-validation"
                     novalidate
                     method="post"

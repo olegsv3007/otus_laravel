@@ -20,7 +20,7 @@ class CmsRoutesProvider
     public function registerRoutes(): void
     {
         Route::group([
-            'prefix' => '/cms',
+            'prefix' => '/{locale}/cms',
             'as' => 'cms.',
             'middleware' => 'auth'
         ], function() {
@@ -63,7 +63,7 @@ class CmsRoutesProvider
         });
 
         Route::group([
-            'prefix' => '/cms',
+            'prefix' => '/{locale}/cms',
             'middleware' => 'auth'
         ], function() {
 

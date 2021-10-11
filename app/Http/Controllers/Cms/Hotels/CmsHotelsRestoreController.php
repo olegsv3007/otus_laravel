@@ -15,6 +15,6 @@ class CmsHotelsRestoreController extends BaseCmsHotelsController
 
         $this->getHotelService()->restore($hotel);
 
-        return redirect()->route(CmsRoutes::CMS_HOTELS_INDEX);
+        return redirect()->route(CmsRoutes::CMS_HOTELS_INDEX, ['locale' => $this->getLocale()]);
     }
 }

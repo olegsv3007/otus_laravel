@@ -5,7 +5,7 @@
         <div class="d-flex justify-content-end m-2">
             <x-wrappers.buttons.cms-default-button-link
                 class="btn-primary"
-                :href="route(\App\Services\Routes\Providers\Cms\CmsRoutes::CMS_APARTMENTS_CREATE)"
+                :href="route(\App\Services\Routes\Providers\Cms\CmsRoutes::CMS_APARTMENTS_CREATE, ['locale' => $locale])"
                 :title="__('cms/apartments.buttons.add')"
             >
                 <x-icons.plus />
