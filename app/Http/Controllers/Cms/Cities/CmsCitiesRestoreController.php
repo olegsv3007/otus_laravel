@@ -12,6 +12,6 @@ class CmsCitiesRestoreController extends BaseCmsCitiesController
     {
         $this->getCityService()->restore($city);
 
-        return redirect()->route(CmsRoutes::CMS_CITIES_INDEX, ['locale' => $this->locale]);
+        return redirect()->route(CmsRoutes::CMS_CITIES_INDEX, ['locale' => $this->getLocale()]);
     }
 }

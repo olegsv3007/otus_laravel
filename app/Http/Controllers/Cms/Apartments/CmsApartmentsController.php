@@ -30,7 +30,7 @@ class CmsApartmentsController extends BaseCmsApartmentsController
         $validatedData = $request->validated();
         $this->getApartmentService()->store($validatedData);
 
-        return redirect()->route(CmsRoutes::CMS_APARTMENTS_INDEX, ['locale' => $this->locale]);
+        return redirect()->route(CmsRoutes::CMS_APARTMENTS_INDEX, ['locale' => $this->getLocale()]);
     }
 
     public function edit(Apartment $apartment): View
@@ -47,7 +47,7 @@ class CmsApartmentsController extends BaseCmsApartmentsController
         $validatedData = $request->validated();
         $this->getApartmentService()->update($validatedData, $apartment);
 
-        return redirect()->route(CmsRoutes::CMS_APARTMENTS_INDEX, ['locale' => $this->locale]);
+        return redirect()->route(CmsRoutes::CMS_APARTMENTS_INDEX, ['locale' => $this->getLocale()]);
     }
 
     public function destroy(Apartment $apartment): RedirectResponse
@@ -55,6 +55,6 @@ class CmsApartmentsController extends BaseCmsApartmentsController
         $this->authorize('delete', $apartment);
         $this->getApartmentService()->delete($apartment);
 
-        return redirect()->route(CmsRoutes::CMS_APARTMENTS_INDEX, ['locale' => $this->locale]);
+        return redirect()->route(CmsRoutes::CMS_APARTMENTS_INDEX, ['locale' => $this->getLocale()]);
     }
 }

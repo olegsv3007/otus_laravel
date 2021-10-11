@@ -27,7 +27,7 @@ class CmsCountriesController extends BaseCmsCountriesController
         $validatedData = $request->validated();
         $this->getCountryService()->store($validatedData);
 
-        return redirect()->route(CmsRoutes::CMS_COUNTRIES_INDEX, ['locale' => $this->locale]);
+        return redirect()->route(CmsRoutes::CMS_COUNTRIES_INDEX, ['locale' => $this->getLocale()]);
 
     }
 
@@ -41,13 +41,13 @@ class CmsCountriesController extends BaseCmsCountriesController
         $validatedData = $request->validated();
         $this->getCountryService()->update($validatedData, $country);
 
-        return redirect()->route(CmsRoutes::CMS_COUNTRIES_INDEX, ['locale' => $this->locale]);
+        return redirect()->route(CmsRoutes::CMS_COUNTRIES_INDEX, ['locale' => $this->getLocale()]);
     }
 
     public function destroy(Country $country): RedirectResponse
     {
         $this->getCountryService()->delete($country);
 
-        return redirect()->route(CmsRoutes::CMS_COUNTRIES_INDEX, ['locale' => $this->locale]);
+        return redirect()->route(CmsRoutes::CMS_COUNTRIES_INDEX, ['locale' => $this->getLocale()]);
     }
 }

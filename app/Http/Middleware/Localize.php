@@ -13,7 +13,10 @@ class Localize
 
     public function handle(Request $request, Closure $next)
     {
-        $locale = $this->getRequestLocale($request) ?? self::DEFAULT_LOCALE;
+        $locale = in_array($this->getRequestLocale($request), config('app.supported_locales'), false) ?
+            $this->getRequestLocale($request):
+            self::DEFAULT_LOCALE;
+
         $this->localize($locale);
         $request->route()->forgetParameter(self::PARAMETER_LOCALE);
         return $next($request);

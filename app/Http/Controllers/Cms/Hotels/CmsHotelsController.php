@@ -29,7 +29,7 @@ class CmsHotelsController extends BaseCmsHotelsController
         $validatedData = $request->validated();
         $this->getHotelService()->store($validatedData, $request->user());
 
-        return redirect()->route(CmsRoutes::CMS_HOTELS_INDEX, ['locale' => $this->locale]);
+        return redirect()->route(CmsRoutes::CMS_HOTELS_INDEX, ['locale' => $this->getLocale()]);
     }
 
     public function edit(Hotel $hotel): View
@@ -46,7 +46,7 @@ class CmsHotelsController extends BaseCmsHotelsController
         $validatedData = $request->validated();
         $this->getHotelService()->update($validatedData, $hotel);
 
-        return redirect()->route(CmsRoutes::CMS_HOTELS_INDEX, ['locale' => $this->locale]);
+        return redirect()->route(CmsRoutes::CMS_HOTELS_INDEX, ['locale' => $this->getLocale()]);
     }
 
     public function destroy(Hotel $hotel): RedirectResponse
@@ -55,6 +55,6 @@ class CmsHotelsController extends BaseCmsHotelsController
 
         $this->getHotelService()->delete($hotel);
 
-        return redirect()->route(CmsRoutes::CMS_HOTELS_INDEX, ['locale' => $this->locale]);
+        return redirect()->route(CmsRoutes::CMS_HOTELS_INDEX, ['locale' => $this->getLocale()]);
     }
 }

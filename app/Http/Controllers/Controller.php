@@ -12,10 +12,8 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    protected string $locale;
-
-    public function __construct()
+    protected function getLocale()
     {
-        $this->locale = App::getLocale();
+        return App::getLocale();
     }
 }
