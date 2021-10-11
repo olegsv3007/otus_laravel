@@ -171,6 +171,7 @@ return [
          * Package Service Providers...
          */
         App\Providers\FormServiceProvider::class,
+        \PhpClickHouseLaravel\ClickhouseServiceProvider::class,
 
         /*
          * Application Service Providers...
