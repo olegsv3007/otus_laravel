@@ -5,7 +5,7 @@
         <div class="d-flex justify-content-end m-2">
             <x-wrappers.buttons.cms-default-button-link
                 class="btn-primary"
-                :href="route(\App\Services\Routes\Providers\Cms\CmsRoutes::CMS_COUNTRIES_CREATE)"
+                :href="route(\App\Services\Routes\Providers\Cms\CmsRoutes::CMS_COUNTRIES_CREATE, ['locale' => $locale])"
                 :title="__('cms/countries.buttons.add')"
             >
                 <x-icons.plus />

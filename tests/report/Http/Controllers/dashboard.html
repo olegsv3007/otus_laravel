@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for /var/www/app/Http/Controllers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../../_css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="../../_css/nv.d3.min.css" rel="stylesheet" type="text/css">
+  <link href="../../_css/style.css" rel="stylesheet" type="text/css">
+  <link href="../../_css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="../../index.html">/var/www/app</a></li>
+         <li class="breadcrumb-item"><a href="../index.html">Http</a></li>
+         <li class="breadcrumb-item"><a href="index.html">Controllers</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Auth/ConfirmPasswordController.php.html#9">App\Http\Controllers\Auth\ConfirmPasswordController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Auth/VerificationController.php.html#9">App\Http\Controllers\Auth\VerificationController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Cms/Images/CmsImagesRemoveController.php.html#9">App\Http\Controllers\Cms\Images\CmsImagesRemoveController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="HomeController.php.html#7">App\Http\Controllers\HomeController</a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Cms/Images/CmsImagesRemoveController.php.html#9">App\Http\Controllers\Cms\Images\CmsImagesRemoveController</a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Auth/ConfirmPasswordController.php.html#36"><abbr title="App\Http\Controllers\Auth\ConfirmPasswordController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Auth/VerificationController.php.html#36"><abbr title="App\Http\Controllers\Auth\VerificationController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Cms/Images/CmsImagesRemoveController.php.html#11"><abbr title="App\Http\Controllers\Cms\Images\CmsImagesRemoveController::__invoke">__invoke</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="HomeController.php.html#14"><abbr title="App\Http\Controllers\HomeController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="HomeController.php.html#24"><abbr title="App\Http\Controllers\HomeController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Cms/Images/CmsImagesRemoveController.php.html#11"><abbr title="App\Http\Controllers\Cms\Images\CmsImagesRemoveController::__invoke">__invoke</abbr></a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 9.2.7</a> using <a href="https://secure.php.net/" target="_top">PHP 8.0.10</a> and <a href="https://phpunit.de/">PHPUnit 9.5.8</a> at Sun Oct 3 7:59:26 UTC 2021.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="../../_js/jquery.min.js" type="text/javascript"></script>
+  <script src="../../_js/d3.min.js" type="text/javascript"></script>
+  <script src="../../_js/nv.d3.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([4,0,0,0,0,0,0,0,0,0,0,27], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([5,0,0,0,0,0,0,0,0,0,0,61], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[0,1,"<a href=\"Auth\/ConfirmPasswordController.php.html#9\">App\\Http\\Controllers\\Auth\\ConfirmPasswordController<\/a>"],[100,0,"<a href=\"Auth\/ForgotPasswordController.php.html#8\">App\\Http\\Controllers\\Auth\\ForgotPasswordController<\/a>"],[100,1,"<a href=\"Auth\/LoginController.php.html#9\">App\\Http\\Controllers\\Auth\\LoginController<\/a>"],[100,3,"<a href=\"Auth\/RegisterController.php.html#12\">App\\Http\\Controllers\\Auth\\RegisterController<\/a>"],[100,0,"<a href=\"Auth\/ResetPasswordController.php.html#9\">App\\Http\\Controllers\\Auth\\ResetPasswordController<\/a>"],[0,1,"<a href=\"Auth\/VerificationController.php.html#9\">App\\Http\\Controllers\\Auth\\VerificationController<\/a>"],[100,1,"<a href=\"Cms\/Apartments\/BaseCmsApartmentsController.php.html#9\">App\\Http\\Controllers\\Cms\\Apartments\\BaseCmsApartmentsController<\/a>"],[100,6,"<a href=\"Cms\/Apartments\/CmsApartmentsController.php.html#12\">App\\Http\\Controllers\\Cms\\Apartments\\CmsApartmentsController<\/a>"],[100,1,"<a href=\"Cms\/Apartments\/CmsApartmentsRestoreController.php.html#9\">App\\Http\\Controllers\\Cms\\Apartments\\CmsApartmentsRestoreController<\/a>"],[100,3,"<a href=\"Cms\/Apartments\/Requests\/StoreApartmentRequest.php.html#8\">App\\Http\\Controllers\\Cms\\Apartments\\Requests\\StoreApartmentRequest<\/a>"],[100,2,"<a href=\"Cms\/Apartments\/Requests\/UpdateApartmentRequest.php.html#5\">App\\Http\\Controllers\\Cms\\Apartments\\Requests\\UpdateApartmentRequest<\/a>"],[100,1,"<a href=\"Cms\/Cities\/BaseCmsCitiesController.php.html#9\">App\\Http\\Controllers\\Cms\\Cities\\BaseCmsCitiesController<\/a>"],[100,6,"<a href=\"Cms\/Cities\/CmsCitiesController.php.html#11\">App\\Http\\Controllers\\Cms\\Cities\\CmsCitiesController<\/a>"],[100,1,"<a href=\"Cms\/Cities\/CmsCitiesRestoreController.php.html#9\">App\\Http\\Controllers\\Cms\\Cities\\CmsCitiesRestoreController<\/a>"],[100,3,"<a href=\"Cms\/Cities\/Requests\/StoreCityRequest.php.html#8\">App\\Http\\Controllers\\Cms\\Cities\\Requests\\StoreCityRequest<\/a>"],[100,1,"<a href=\"Cms\/Countries\/BaseCmsCountriesController.php.html#8\">App\\Http\\Controllers\\Cms\\Countries\\BaseCmsCountriesController<\/a>"],[100,6,"<a href=\"Cms\/Countries\/CmsCountriesController.php.html#11\">App\\Http\\Controllers\\Cms\\Countries\\CmsCountriesController<\/a>"],[100,1,"<a href=\"Cms\/Countries\/CmsCountriesRestoreController.php.html#9\">App\\Http\\Controllers\\Cms\\Countries\\CmsCountriesRestoreController<\/a>"],[100,2,"<a href=\"Cms\/Countries\/Requests\/StoreCountryRequest.php.html#7\">App\\Http\\Controllers\\Cms\\Countries\\Requests\\StoreCountryRequest<\/a>"],[100,1,"<a href=\"Cms\/Hotels\/BaseCmsHotelsController.php.html#8\">App\\Http\\Controllers\\Cms\\Hotels\\BaseCmsHotelsController<\/a>"],[100,6,"<a href=\"Cms\/Hotels\/CmsHotelsController.php.html#12\">App\\Http\\Controllers\\Cms\\Hotels\\CmsHotelsController<\/a>"],[100,1,"<a href=\"Cms\/Hotels\/CmsHotelsRestoreController.php.html#9\">App\\Http\\Controllers\\Cms\\Hotels\\CmsHotelsRestoreController<\/a>"],[100,3,"<a href=\"Cms\/Hotels\/Requests\/StoreHotelRequest.php.html#7\">App\\Http\\Controllers\\Cms\\Hotels\\Requests\\StoreHotelRequest<\/a>"],[100,2,"<a href=\"Cms\/Hotels\/Requests\/UpdateHotelRequest.php.html#7\">App\\Http\\Controllers\\Cms\\Hotels\\Requests\\UpdateHotelRequest<\/a>"],[0,2,"<a href=\"Cms\/Images\/CmsImagesRemoveController.php.html#9\">App\\Http\\Controllers\\Cms\\Images\\CmsImagesRemoveController<\/a>"],[100,1,"<a href=\"Cms\/Organizations\/BaseCmsOrganizationsController.php.html#8\">App\\Http\\Controllers\\Cms\\Organizations\\BaseCmsOrganizationsController<\/a>"],[100,6,"<a href=\"Cms\/Organizations\/CmsOrganizationsController.php.html#11\">App\\Http\\Controllers\\Cms\\Organizations\\CmsOrganizationsController<\/a>"],[100,1,"<a href=\"Cms\/Organizations\/CmsOrganizationsRestoreController.php.html#9\">App\\Http\\Controllers\\Cms\\Organizations\\CmsOrganizationsRestoreController<\/a>"],[100,2,"<a href=\"Cms\/Organizations\/Requests\/StoreOrganizationRequest.php.html#7\">App\\Http\\Controllers\\Cms\\Organizations\\Requests\\StoreOrganizationRequest<\/a>"],[100,0,"<a href=\"Controller.php.html#10\">App\\Http\\Controllers\\Controller<\/a>"],[0,2,"<a href=\"HomeController.php.html#7\">App\\Http\\Controllers\\HomeController<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[0,1,"<a href=\"Auth\/ConfirmPasswordController.php.html#36\">App\\Http\\Controllers\\Auth\\ConfirmPasswordController::__construct<\/a>"],[100,1,"<a href=\"Auth\/LoginController.php.html#36\">App\\Http\\Controllers\\Auth\\LoginController::__construct<\/a>"],[100,1,"<a href=\"Auth\/RegisterController.php.html#39\">App\\Http\\Controllers\\Auth\\RegisterController::__construct<\/a>"],[100,1,"<a href=\"Auth\/RegisterController.php.html#50\">App\\Http\\Controllers\\Auth\\RegisterController::validator<\/a>"],[100,1,"<a href=\"Auth\/RegisterController.php.html#65\">App\\Http\\Controllers\\Auth\\RegisterController::create<\/a>"],[0,1,"<a href=\"Auth\/VerificationController.php.html#36\">App\\Http\\Controllers\\Auth\\VerificationController::__construct<\/a>"],[100,1,"<a href=\"Cms\/Apartments\/BaseCmsApartmentsController.php.html#11\">App\\Http\\Controllers\\Cms\\Apartments\\BaseCmsApartmentsController::getApartmentService<\/a>"],[100,1,"<a href=\"Cms\/Apartments\/CmsApartmentsController.php.html#15\">App\\Http\\Controllers\\Cms\\Apartments\\CmsApartmentsController::index<\/a>"],[100,1,"<a href=\"Cms\/Apartments\/CmsApartmentsController.php.html#22\">App\\Http\\Controllers\\Cms\\Apartments\\CmsApartmentsController::create<\/a>"],[100,1,"<a href=\"Cms\/Apartments\/CmsApartmentsController.php.html#27\">App\\Http\\Controllers\\Cms\\Apartments\\CmsApartmentsController::store<\/a>"],[100,1,"<a href=\"Cms\/Apartments\/CmsApartmentsController.php.html#35\">App\\Http\\Controllers\\Cms\\Apartments\\CmsApartmentsController::edit<\/a>"],[100,1,"<a href=\"Cms\/Apartments\/CmsApartmentsController.php.html#42\">App\\Http\\Controllers\\Cms\\Apartments\\CmsApartmentsController::update<\/a>"],[100,1,"<a href=\"Cms\/Apartments\/CmsApartmentsController.php.html#52\">App\\Http\\Controllers\\Cms\\Apartments\\CmsApartmentsController::destroy<\/a>"],[100,1,"<a href=\"Cms\/Apartments\/CmsApartmentsRestoreController.php.html#12\">App\\Http\\Controllers\\Cms\\Apartments\\CmsApartmentsRestoreController::__invoke<\/a>"],[100,1,"<a href=\"Cms\/Apartments\/Requests\/StoreApartmentRequest.php.html#10\">App\\Http\\Controllers\\Cms\\Apartments\\Requests\\StoreApartmentRequest::authorize<\/a>"],[100,1,"<a href=\"Cms\/Apartments\/Requests\/StoreApartmentRequest.php.html#15\">App\\Http\\Controllers\\Cms\\Apartments\\Requests\\StoreApartmentRequest::rules<\/a>"],[100,1,"<a href=\"Cms\/Apartments\/Requests\/StoreApartmentRequest.php.html#58\">App\\Http\\Controllers\\Cms\\Apartments\\Requests\\StoreApartmentRequest::messages<\/a>"],[100,1,"<a href=\"Cms\/Apartments\/Requests\/UpdateApartmentRequest.php.html#7\">App\\Http\\Controllers\\Cms\\Apartments\\Requests\\UpdateApartmentRequest::authorize<\/a>"],[100,1,"<a href=\"Cms\/Apartments\/Requests\/UpdateApartmentRequest.php.html#12\">App\\Http\\Controllers\\Cms\\Apartments\\Requests\\UpdateApartmentRequest::rules<\/a>"],[100,1,"<a href=\"Cms\/Cities\/BaseCmsCitiesController.php.html#11\">App\\Http\\Controllers\\Cms\\Cities\\BaseCmsCitiesController::getCityService<\/a>"],[100,1,"<a href=\"Cms\/Cities\/CmsCitiesController.php.html#13\">App\\Http\\Controllers\\Cms\\Cities\\CmsCitiesController::index<\/a>"],[100,1,"<a href=\"Cms\/Cities\/CmsCitiesController.php.html#20\">App\\Http\\Controllers\\Cms\\Cities\\CmsCitiesController::create<\/a>"],[100,1,"<a href=\"Cms\/Cities\/CmsCitiesController.php.html#25\">App\\Http\\Controllers\\Cms\\Cities\\CmsCitiesController::store<\/a>"],[100,1,"<a href=\"Cms\/Cities\/CmsCitiesController.php.html#33\">App\\Http\\Controllers\\Cms\\Cities\\CmsCitiesController::edit<\/a>"],[100,1,"<a href=\"Cms\/Cities\/CmsCitiesController.php.html#38\">App\\Http\\Controllers\\Cms\\Cities\\CmsCitiesController::update<\/a>"],[100,1,"<a href=\"Cms\/Cities\/CmsCitiesController.php.html#46\">App\\Http\\Controllers\\Cms\\Cities\\CmsCitiesController::destroy<\/a>"],[100,1,"<a href=\"Cms\/Cities\/CmsCitiesRestoreController.php.html#11\">App\\Http\\Controllers\\Cms\\Cities\\CmsCitiesRestoreController::__invoke<\/a>"],[100,1,"<a href=\"Cms\/Cities\/Requests\/StoreCityRequest.php.html#10\">App\\Http\\Controllers\\Cms\\Cities\\Requests\\StoreCityRequest::authorize<\/a>"],[100,1,"<a href=\"Cms\/Cities\/Requests\/StoreCityRequest.php.html#15\">App\\Http\\Controllers\\Cms\\Cities\\Requests\\StoreCityRequest::rules<\/a>"],[100,1,"<a href=\"Cms\/Cities\/Requests\/StoreCityRequest.php.html#38\">App\\Http\\Controllers\\Cms\\Cities\\Requests\\StoreCityRequest::messages<\/a>"],[100,1,"<a href=\"Cms\/Countries\/BaseCmsCountriesController.php.html#10\">App\\Http\\Controllers\\Cms\\Countries\\BaseCmsCountriesController::getCountryService<\/a>"],[100,1,"<a href=\"Cms\/Countries\/CmsCountriesController.php.html#13\">App\\Http\\Controllers\\Cms\\Countries\\CmsCountriesController::index<\/a>"],[100,1,"<a href=\"Cms\/Countries\/CmsCountriesController.php.html#20\">App\\Http\\Controllers\\Cms\\Countries\\CmsCountriesController::create<\/a>"],[100,1,"<a href=\"Cms\/Countries\/CmsCountriesController.php.html#25\">App\\Http\\Controllers\\Cms\\Countries\\CmsCountriesController::store<\/a>"],[100,1,"<a href=\"Cms\/Countries\/CmsCountriesController.php.html#34\">App\\Http\\Controllers\\Cms\\Countries\\CmsCountriesController::edit<\/a>"],[100,1,"<a href=\"Cms\/Countries\/CmsCountriesController.php.html#39\">App\\Http\\Controllers\\Cms\\Countries\\CmsCountriesController::update<\/a>"],[100,1,"<a href=\"Cms\/Countries\/CmsCountriesController.php.html#47\">App\\Http\\Controllers\\Cms\\Countries\\CmsCountriesController::destroy<\/a>"],[100,1,"<a href=\"Cms\/Countries\/CmsCountriesRestoreController.php.html#12\">App\\Http\\Controllers\\Cms\\Countries\\CmsCountriesRestoreController::__invoke<\/a>"],[100,1,"<a href=\"Cms\/Countries\/Requests\/StoreCountryRequest.php.html#9\">App\\Http\\Controllers\\Cms\\Countries\\Requests\\StoreCountryRequest::authorize<\/a>"],[100,1,"<a href=\"Cms\/Countries\/Requests\/StoreCountryRequest.php.html#14\">App\\Http\\Controllers\\Cms\\Countries\\Requests\\StoreCountryRequest::rules<\/a>"],[100,1,"<a href=\"Cms\/Hotels\/BaseCmsHotelsController.php.html#10\">App\\Http\\Controllers\\Cms\\Hotels\\BaseCmsHotelsController::getHotelService<\/a>"],[100,1,"<a href=\"Cms\/Hotels\/CmsHotelsController.php.html#15\">App\\Http\\Controllers\\Cms\\Hotels\\CmsHotelsController::index<\/a>"],[100,1,"<a href=\"Cms\/Hotels\/CmsHotelsController.php.html#22\">App\\Http\\Controllers\\Cms\\Hotels\\CmsHotelsController::create<\/a>"],[100,1,"<a href=\"Cms\/Hotels\/CmsHotelsController.php.html#27\">App\\Http\\Controllers\\Cms\\Hotels\\CmsHotelsController::store<\/a>"],[100,1,"<a href=\"Cms\/Hotels\/CmsHotelsController.php.html#35\">App\\Http\\Controllers\\Cms\\Hotels\\CmsHotelsController::edit<\/a>"],[100,1,"<a href=\"Cms\/Hotels\/CmsHotelsController.php.html#42\">App\\Http\\Controllers\\Cms\\Hotels\\CmsHotelsController::update<\/a>"],[100,1,"<a href=\"Cms\/Hotels\/CmsHotelsController.php.html#52\">App\\Http\\Controllers\\Cms\\Hotels\\CmsHotelsController::destroy<\/a>"],[100,1,"<a href=\"Cms\/Hotels\/CmsHotelsRestoreController.php.html#12\">App\\Http\\Controllers\\Cms\\Hotels\\CmsHotelsRestoreController::__invoke<\/a>"],[100,1,"<a href=\"Cms\/Hotels\/Requests\/StoreHotelRequest.php.html#9\">App\\Http\\Controllers\\Cms\\Hotels\\Requests\\StoreHotelRequest::authorize<\/a>"],[100,1,"<a href=\"Cms\/Hotels\/Requests\/StoreHotelRequest.php.html#14\">App\\Http\\Controllers\\Cms\\Hotels\\Requests\\StoreHotelRequest::rules<\/a>"],[100,1,"<a href=\"Cms\/Hotels\/Requests\/StoreHotelRequest.php.html#62\">App\\Http\\Controllers\\Cms\\Hotels\\Requests\\StoreHotelRequest::messages<\/a>"],[100,1,"<a href=\"Cms\/Hotels\/Requests\/UpdateHotelRequest.php.html#9\">App\\Http\\Controllers\\Cms\\Hotels\\Requests\\UpdateHotelRequest::authorize<\/a>"],[100,1,"<a href=\"Cms\/Hotels\/Requests\/UpdateHotelRequest.php.html#14\">App\\Http\\Controllers\\Cms\\Hotels\\Requests\\UpdateHotelRequest::rules<\/a>"],[0,2,"<a href=\"Cms\/Images\/CmsImagesRemoveController.php.html#11\">App\\Http\\Controllers\\Cms\\Images\\CmsImagesRemoveController::__invoke<\/a>"],[100,1,"<a href=\"Cms\/Organizations\/BaseCmsOrganizationsController.php.html#10\">App\\Http\\Controllers\\Cms\\Organizations\\BaseCmsOrganizationsController::getOrganizationService<\/a>"],[100,1,"<a href=\"Cms\/Organizations\/CmsOrganizationsController.php.html#14\">App\\Http\\Controllers\\Cms\\Organizations\\CmsOrganizationsController::index<\/a>"],[100,1,"<a href=\"Cms\/Organizations\/CmsOrganizationsController.php.html#21\">App\\Http\\Controllers\\Cms\\Organizations\\CmsOrganizationsController::create<\/a>"],[100,1,"<a href=\"Cms\/Organizations\/CmsOrganizationsController.php.html#26\">App\\Http\\Controllers\\Cms\\Organizations\\CmsOrganizationsController::store<\/a>"],[100,1,"<a href=\"Cms\/Organizations\/CmsOrganizationsController.php.html#34\">App\\Http\\Controllers\\Cms\\Organizations\\CmsOrganizationsController::edit<\/a>"],[100,1,"<a href=\"Cms\/Organizations\/CmsOrganizationsController.php.html#39\">App\\Http\\Controllers\\Cms\\Organizations\\CmsOrganizationsController::update<\/a>"],[100,1,"<a href=\"Cms\/Organizations\/CmsOrganizationsController.php.html#47\">App\\Http\\Controllers\\Cms\\Organizations\\CmsOrganizationsController::destroy<\/a>"],[100,1,"<a href=\"Cms\/Organizations\/CmsOrganizationsRestoreController.php.html#12\">App\\Http\\Controllers\\Cms\\Organizations\\CmsOrganizationsRestoreController::__invoke<\/a>"],[100,1,"<a href=\"Cms\/Organizations\/Requests\/StoreOrganizationRequest.php.html#9\">App\\Http\\Controllers\\Cms\\Organizations\\Requests\\StoreOrganizationRequest::authorize<\/a>"],[100,1,"<a href=\"Cms\/Organizations\/Requests\/StoreOrganizationRequest.php.html#14\">App\\Http\\Controllers\\Cms\\Organizations\\Requests\\StoreOrganizationRequest::rules<\/a>"],[0,1,"<a href=\"HomeController.php.html#14\">App\\Http\\Controllers\\HomeController::__construct<\/a>"],[0,1,"<a href=\"HomeController.php.html#24\">App\\Http\\Controllers\\HomeController::index<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

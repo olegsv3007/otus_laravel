@@ -13,6 +13,6 @@ class CmsApartmentsRestoreController extends BaseCmsApartmentsController
     {
         $this->getApartmentService()->restore($apartment);
 
-        return redirect()->route(CmsRoutes::CMS_APARTMENTS_INDEX);
+        return redirect()->route(CmsRoutes::CMS_APARTMENTS_INDEX, ['locale' => $this->getLocale()]);
     }
 }

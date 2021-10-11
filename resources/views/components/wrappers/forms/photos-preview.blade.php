@@ -11,7 +11,7 @@
                 <img height="150" src="{{ $path . '/' . $image->filename }}" class="rounded img-fluid img-thumbnail" alt="...">
                 <x-wrappers.buttons.button-form
                     method="delete"
-                    :route="route('cms.images.delete', ['image' => $image])"
+                    :route="route('cms.images.delete', ['image' => $image, 'locale' => $locale])"
                     class="btn-danger btn-sm preview-image-remove-btn"
                     id="remove_image_{{ $image->id }}"
                     title=""

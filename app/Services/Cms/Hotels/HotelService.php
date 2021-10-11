@@ -22,13 +22,13 @@ class HotelService implements ItemsForSelectInterface
 
     public function get(): Collection
     {
-        return $this->hotelRepository->get();
+        return $this->hotelRepository->get(auth()->user()->organization_id);
     }
 
     public function getPaginate(int $count = null, int $linksLimit = null): ?LengthAwarePaginator
     {
         return
-            $this->hotelRepository->getPaginate($count, $linksLimit) ??
+            $this->hotelRepository->getPaginate(auth()->user()->organization_id, $count, $linksLimit) ??
             new LengthAwarePaginator([], 0, 1);
     }
 

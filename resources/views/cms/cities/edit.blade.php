@@ -9,7 +9,7 @@
                 <x-wrappers.buttons.button-form
                     method="delete"
                     class="btn-danger float-right"
-                    :route="route(\App\Services\Routes\Providers\Cms\CmsRoutes::CMS_CITIES_DESTROY, ['city_no_scope' => $city])"
+                    :route="route(\App\Services\Routes\Providers\Cms\CmsRoutes::CMS_CITIES_DESTROY, ['city_no_scope' => $city, 'locale' => $locale])"
                     :title="__('cms/cities.buttons.delete')"
                     id="remove_city_{{ $city->id }}"
                 />
@@ -17,12 +17,12 @@
                 <x-wrappers.buttons.button-form
                     method="patch"
                     class="btn-warning float-right"
-                    :route="route(\App\Services\Routes\Providers\Cms\CmsRoutes::CMS_CITIES_RESTORE, ['city_no_scope' => $city])"
+                    :route="route(\App\Services\Routes\Providers\Cms\CmsRoutes::CMS_CITIES_RESTORE, ['city_no_scope' => $city, 'locale' => $locale])"
                     :title="__('cms/cities.buttons.restore')"
                     id="restore_city_{{ $city->id }}"
                 />
                 @endif
-                <form action="{{ route(\App\Services\Routes\Providers\Cms\CmsRoutes::CMS_CITIES_UPDATE, ['city_no_scope' => $city]) }}" class="mt-5 needs-validation" novalidate method="post">
+                <form action="{{ route(\App\Services\Routes\Providers\Cms\CmsRoutes::CMS_CITIES_UPDATE, ['city_no_scope' => $city, 'locale' => $locale]) }}" class="mt-5 needs-validation" novalidate method="post">
                     @csrf
                     @method('PUT')
                     <x-wrappers.forms.bs-text

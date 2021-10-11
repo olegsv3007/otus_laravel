@@ -22,13 +22,13 @@
 <body>
 <header>
     <div class="header">
-        <a href="{{ route('home') }}" class="logo">{{ __('public/common.company_name') }}</a>
+        <a href="{{ route('home', ['locale' => $locale]) }}" class="logo">{{ __('public/common.company_name') }}</a>
         <div class="auth_panel">
             @guest
                 <a class="auth_panel_item" href="{{ route('login') }}">{{ __('public/common.auth.login') }}</a>
                 <a class="auth_panel_item" href="{{ route('register') }}">{{ __('public/common.auth.register') }}</a>
             @else
-                <a class="auth_panel_item" href="{{ route('profile') }}">{{ auth()->user()->name }}</a>
+                <a class="auth_panel_item" href="{{ route('profile', ['locale' => $locale]) }}">{{ auth()->user()->name }}</a>
                 <a class="auth_panel_item" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">

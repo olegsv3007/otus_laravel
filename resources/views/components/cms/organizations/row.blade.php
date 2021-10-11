@@ -1,7 +1,7 @@
 
 @props(['organization'])
 
-<tr class="clickable-row" data-href="{{ route(\App\Services\Routes\Providers\Cms\CmsRoutes::CMS_ORGANIZATIONS_EDIT, ['organization_no_scope' => $organization]) }}">
+<tr class="clickable-row" data-href="{{ route(\App\Services\Routes\Providers\Cms\CmsRoutes::CMS_ORGANIZATIONS_EDIT, ['organization_no_scope' => $organization, 'locale' => $locale]) }}">
     <th scope="row" class="col-1">{{ $organization->id }}
         @if($organization->deleted_at)
             <span class="ml-1 badge badge-pill badge-warning">{{ __('cms/common.deleted') }}</span>

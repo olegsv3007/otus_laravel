@@ -2,6 +2,7 @@
 
 namespace App\View\Components\CmsMenu;
 
+use Illuminate\Support\Facades\App;
 use Illuminate\View\Component;
 
 class Item extends Component
@@ -13,7 +14,8 @@ class Item extends Component
         public array $item
     )
     {
-        $this->active = (get_url_segment(route($this->route), 2) == request()->segment(2));
+        $locale = App::getLocale();
+        $this->active = (get_url_segment(route($this->route, ['locale' => $locale]), 3) == request()->segment(3));
     }
 
     public function render()

@@ -24,7 +24,7 @@ class ApartmentService
 
     public function getPaginate(int $count = null, int $linksLimit = null): LengthAwarePaginator
     {
-        return $this->apartmentRepository->getPaginate($count, $linksLimit);
+        return $this->apartmentRepository->getPaginate(auth()->user()->organization_id, $count, $linksLimit);
     }
 
     public function store(array $data): ?Apartment

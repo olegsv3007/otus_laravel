@@ -105,6 +105,11 @@ return [
             'settings' => [ // optional
                 'max_partitions_per_insert_block' => 300,
             ],
+          
+        'sqlite_testing' => [
+            'driver' => 'sqlite',
+            'database' => ':memory:',
+            'prefix' => '',
         ],
 
     ],

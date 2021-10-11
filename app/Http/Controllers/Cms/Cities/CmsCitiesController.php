@@ -27,7 +27,7 @@ class CmsCitiesController extends BaseCmsCitiesController
         $validatedData = $request->validated();
         $this->getCityService()->store($validatedData);
 
-        return redirect()->route(CmsRoutes::CMS_CITIES_INDEX);
+        return redirect()->route(CmsRoutes::CMS_CITIES_INDEX, ['locale' => $this->getLocale()]);
     }
 
     public function edit(City $city): View
@@ -40,13 +40,13 @@ class CmsCitiesController extends BaseCmsCitiesController
         $validatedData = $request->validated();
         $this->getCityService()->update($validatedData, $city);
 
-        return redirect()->route(CmsRoutes::CMS_CITIES_INDEX);
+        return redirect()->route(CmsRoutes::CMS_CITIES_INDEX, ['locale' => $this->getLocale()]);
     }
 
     public function destroy(City $city): RedirectResponse
     {
         $this->getCityService()->delete($city);
 
-        return redirect()->route(CmsRoutes::CMS_CITIES_INDEX);
+        return redirect()->route(CmsRoutes::CMS_CITIES_INDEX, ['locale' => $this->getLocale()]);
     }
 }

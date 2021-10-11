@@ -19,21 +19,25 @@ Route::get('/', function () {
     return view('public.index');
 })->name('home');
 
-Route::get('/profile', function () {
+Route::get('/{locale}', function () {
+    return view('public.index');
+})->name('home');
+
+Route::get('/{locale}/profile', function () {
     return view('public.profile');
 })->name('profile');
 
-Route::get('/order_history', function () {
+Route::get('/{locale}/order_history', function () {
     return view('public.order_history');
 })->name('profile.order_history');
 
-Route::get('/view_history', function () {
+Route::get('/{locale}/view_history', function () {
     return view('public.view_history');
 })->name('profile.view_history');
 
 Route::group([
     'middleware' => 'auth',
-    'prefix' => '/cms',
+    'prefix' => '/{locale}/cms',
 
 ], function () {
     Route::get('', function () {

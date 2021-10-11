@@ -3,24 +3,41 @@
 namespace App\Services\Cms\Cities\Repositories;
 
 use App\Models\City;
+use App\Models\Country;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Cache;
 
 class CityRepository
 {
     public function get(): Collection
     {
-        return City::withoutGlobalScopes()->get();
+        return Cache::tags([City::CACHE_TAG])->remember(
+            'cms_all_cities',
+            config('cms.cache.lifetime'),
+            function () {
+                return City::withoutGlobalScopes()->get();
+            }
+        );
     }
 
     public function getPaginate(int $count = null, int $linksLimit = null): LengthAwarePaginator
     {
-        return City::withTrashed()
-            ->with(['country' => function($query) {
-                return $query->withTrashed();
-            }])
-            ->paginate($count ?? config('cms.pagination.items_per_page'))
-            ->onEachSide($linksLimit ?? config('cms.pagination.links_limit'));
+        $itemsPerPage = $count ?? config('cms.pagination.items_per_page');
+        $linksLimit = $linksLimit ?? config('cms.pagination.links_limit');
+        $currentPage = request()->get('page', 1);
+
+        return Cache::tags([City::CACHE_TAG, Country::CACHE_TAG])->remember(
+            "cms_paginated_cities:all:per_page:{$itemsPerPage}:links_limit:{$linksLimit}:currentPage:{$currentPage}",
+            config('cms.cache.lifetime'),
+            function () use ($itemsPerPage, $linksLimit) {
+                return City::withTrashed()
+                    ->with(['country' => function ($query) {
+                        return $query->withTrashed();
+                    }])
+                    ->paginate($itemsPerPage)
+                    ->onEachSide($linksLimit );
+            });
     }
 
     public function store(array $data): ?City
