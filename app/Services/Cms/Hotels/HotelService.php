@@ -22,7 +22,7 @@ class HotelService implements ItemsForSelectInterface
 
     public function get(): Collection
     {
-        return $this->hotelRepository->get(auth()->user()->organization_id);
+        return $this->hotelRepository->get();
     }
 
     public function getPaginate(int $count = null, int $linksLimit = null): ?LengthAwarePaginator
@@ -92,7 +92,7 @@ class HotelService implements ItemsForSelectInterface
 
     public function getItemsForSelect(): Collection
     {
-        return $this->get();
+        return $this->hotelRepository->getItemsForSelect(auth()->user()->organization_id);
     }
 
     public function restore(Hotel $hotel): ?bool
