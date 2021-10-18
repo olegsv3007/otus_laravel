@@ -12,15 +12,14 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class HotelRepository
 {
-    public function get(int $organizationId): Collection
+    public function get(): Collection
     {
 
         return Cache::tags([Hotel::CACHE_TAG])->remember(
-            "organization:$organizationId:hotels_all",
+            "hotels:all",
             config('cms.cache.lifetime'),
-            function() use ($organizationId) {
+            function() {
                 return Hotel::withoutGlobalScopes()
-                    ->where('organization_id', $organizationId)
                     ->get();
             }
         );
@@ -86,5 +85,19 @@ class HotelRepository
     public function restore(Hotel $hotel): ?bool
     {
         return $hotel->restore();
+    }
+
+    public function getItemsForSelect(int $organizationId): Collection
+    {
+
+        return Cache::tags([Hotel::CACHE_TAG])->remember(
+            "organization:$organizationId:hotels_all",
+            config('cms.cache.lifetime'),
+            function() use ($organizationId) {
+                return Hotel::withoutGlobalScopes()
+                    ->where('organization_id', $organizationId)
+                    ->get('name');
+            }
+        );
     }
 }
